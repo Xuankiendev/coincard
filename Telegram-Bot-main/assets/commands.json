@@ -1,0 +1,495 @@
+{
+    "removeadmin": {
+        "name": "removeadmin",
+        "version": "1.0.0",
+        "hasPermssion": 4,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xóa người dùng khỏi danh sách quản trị viên Bot",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/removeadmin",
+        "cooldowns": 5,
+        "alias": [
+            "remove"
+        ]
+    },
+    "addadmin": {
+        "name": "addadmin",
+        "version": "1.0.0",
+        "hasPermssion": 4,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thêm người dùng vào danh sách quản trị viên Bot",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/removeadmin",
+        "cooldowns": 5,
+        "alias": [
+            "add"
+        ]
+    },
+    "tiktok": {
+        "name": "tiktok",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tìm kiếm video trên nền tảng TikTok",
+        "commandCategory": "Tiện ích",
+        "usages": "/tiktok [nội dung cần tìm]",
+        "cooldowns": 30
+    },
+    "autopr": {
+        "name": "autopr",
+        "version": "1.0.0",
+        "hasPermssion": 4,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thiết lập tự động gửi tin nhắn",
+        "commandCategory": "Quản ký Bot",
+        "usages": "/autopr [thời gian] | [nội dung]",
+        "cooldowns": 5
+    },
+    "wikipedia": {
+        "name": "wikipedia",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tìm kiếm thông tin trên Wikipedia",
+        "commandCategory": "Tiện ích",
+        "usages": "/wikipedia [nội dung]",
+        "cooldowns": 15
+    },
+    "bot": {
+        "name": "bot",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Bật tắt Bot cho nhóm",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/bot [on/off]",
+        "cooldowns": 5
+    },
+    "voice": {
+        "name": "voice",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tạo âm thanh từ nội dung",
+        "commandCategory": "Tiện ích",
+        "usages": "/voice [nội dung]",
+        "cooldowns": 5
+    },
+    "viewcode": {
+        "name": "viewcode",
+        "version": "1.0.0",
+        "hasPermssion": 4,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem code",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/viewcode [tên lệnh]",
+        "cooldowns": 5
+    },
+    "menu": {
+        "name": "menu",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Danh sách lệnh Bot",
+        "commandCategory": "Tiện ích",
+        "usages": "/menu",
+        "cooldowns": 5
+    },
+    "botinfo": {
+        "name": "botinfo",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thông tin Bot",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/botinfo",
+        "cooldowns": 30,
+        "alias": [
+            "detail"
+        ]
+    },
+    "ipinfo": {
+        "name": "ipinfo",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Lấy thông tin địa chỉ IP",
+        "commandCategory": "Tiện ích",
+        "usages": "/ipinfo [ip]",
+        "cooldowns": 30
+    },
+    "shell": {
+        "name": "shell",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Chạy thử đoạn mã hoặc lệnh",
+        "commandCategory": "Tiện ích",
+        "usages": "/shell [shell]",
+        "cooldowns": 5
+    },
+    "getvoice": {
+        "name": "getvoice",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Trích dẫn âm thanh từ video",
+        "commandCategory": "Tiện ích",
+        "usages": "/getvoice",
+        "cooldowns": 60
+    },
+    "phatnguoi": {
+        "name": "phatnguoi",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Kiểm tra thông tin phạt nguội",
+        "commandCategory": "Tiện ích",
+        "usages": "/phatnguoi [biển số xe] [loại xe]",
+        "cooldowns": 60
+    },
+    "like": {
+        "name": "like",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Buff like cho video Tiktok",
+        "commandCategory": "Tiện ích",
+        "usages": "/like [link video]",
+        "cooldowns": 900
+    },
+    "follow": {
+        "name": "follow",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Buff follow cho tài khoản Tiktok",
+        "commandCategory": "Tiện ích",
+        "usages": "/follow [username]",
+        "cooldowns": 360,
+        "alias": [
+            "fl"
+        ]
+    },
+    "alias": {
+        "name": "alias",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Quản lý các lệnh ngắn",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/alias [add/remove]",
+        "cooldowns": 5
+    },
+    "setcommand": {
+        "name": "setcommand",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Sửa lại cấu hình của lệnh",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/setcommand [on/off/p/cd]",
+        "cooldowns": 5,
+        "alias": [
+            "setcmd"
+        ]
+    },
+    "translator": {
+        "name": "translator",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thiết lập tự động dịch ngôn ngữ chỉ định cho nhóm",
+        "commandCategory": "Tiện ích",
+        "usages": "/translator [on/off]",
+        "cooldowns": 5
+    },
+    "make": {
+        "name": "make",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Vẽ ảnh theo prompt",
+        "commandCategory": "Tiện ích",
+        "usages": "/make [nội dung cần vẽ]",
+        "cooldowns": 10,
+        "alias": []
+    },
+    "approve": {
+        "name": "approve",
+        "version": "1.0.0",
+        "hasPermssion": 2,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thiết lập tự động duyệt thành viên",
+        "commandCategory": "Tiện ích",
+        "usages": "/approve",
+        "cooldowns": 5
+    },
+    "soundcloud": {
+        "name": "soundcloud",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Nghe nhạc trên SoundCloud",
+        "commandCategory": "Âm nhạc",
+        "usages": "/soundcloud [tên bài hát]",
+        "cooldowns": 15,
+        "alias": [
+            "scl",
+            "music"
+        ]
+    },
+    "download": {
+        "name": "download",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tải xuống video, ảnh, audio đa nền tảng",
+        "commandCategory": "Tiện ích",
+        "usages": "/download [url]",
+        "cooldowns": 30,
+        "alias": [
+            "dl",
+            "down",
+            "đaoloát"
+        ]
+    },
+    "autochat": {
+        "name": "autochat",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Thiết lập tự động trả lời tin nhắn",
+        "commandCategory": "Tiện ích",
+        "usages": "/autochat",
+        "cooldowns": 5
+    },
+    "zingchart": {
+        "name": "zingchart",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Top BXH nhạc Việt ZingMP3",
+        "commandCategory": "Âm nhạc",
+        "usages": "/zingchart",
+        "cooldowns": 30
+    },
+    "noitu": {
+        "name": "noitu",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Chơi Game nối từ",
+        "commandCategory": "Trò chơi",
+        "usages": "/noitu [join/leave]",
+        "cooldowns": 5
+    },
+    "listadmin": {
+        "name": "listadmin",
+        "version": "1.0.0",
+        "hasPermssion": 2,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Quản lý danh sách quản trị viên Bot",
+        "commandCategory": "Quản lý Bot",
+        "usages": "/listadmin",
+        "cooldowns": 5
+    },
+    "uptime": {
+        "name": "uptime",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem thời gian Bot hoạt động",
+        "commandCategory": "Tiện ích",
+        "usages": "/uptime",
+        "cooldowns": 5,
+        "alias": [
+            "upt"
+        ]
+    },
+    "qrbank": {
+        "name": "qrbank",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tạo mã QR VietQR cho chuyển khoản ngân hàng",
+        "commandCategory": "Tiện ích",
+        "usages": "/qrbank",
+        "cooldowns": 30
+    },
+    "zingmp3": {
+        "name": "zingmp3",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tìm kiếm và nghe nhạc từ ZingMP3",
+        "commandCategory": "Âm nhạc",
+        "usages": "/zingmp3 [tên bài hát]",
+        "cooldowns": 5,
+        "enabled": true,
+        "alias": [
+            "zmp3",
+            "ms3"
+        ]
+    },
+    "fbinfo": {
+        "name": "fbinfo",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem thông tin tài khoản Facebook",
+        "commandCategory": "Tiện ích",
+        "usages": "/fbinfo [uid]",
+        "cooldowns": 30
+    },
+    "weather": {
+        "name": "weather",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem thời tiết tại tỉnh/thành phố",
+        "commandCategory": "Tiện ích",
+        "usages": "/weather [tỉnh/thành phố]",
+        "cooldowns": 30
+    },
+    "chat": {
+        "name": "chat",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Trò chuyện với AI Gemini Model 1.5",
+        "commandCategory": "Tiện ích",
+        "usages": "/chat [câu hỏi]",
+        "cooldowns": 15,
+        "alias": [
+            "ask"
+        ]
+    },
+    "spamsms": {
+        "name": "spamsms",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Gửi tin nhắn SMS đến số điện thoại",
+        "commandCategory": "Tiện ích",
+        "usages": "/spamsms [số điện thoại] [số lần]",
+        "cooldowns": 60
+    },
+    "help": {
+        "name": "help",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem danh sách lệnh của bot",
+        "commandCategory": "Tiện ích",
+        "usages": "/help [số trang]",
+        "cooldowns": 5,
+        "alias": [
+            "start"
+        ]
+    },
+    "downloadresources": {
+        "name": "downloadresources",
+        "version": "1.0.0",
+        "hasPermssion": 2,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tải tài nguyên từ URL",
+        "commandCategory": "Tiện ích",
+        "usages": "/downloadresources [URL]",
+        "cooldowns": 5,
+        "alias": [
+            "dlsrc"
+        ]
+    },
+    "mute": {
+        "name": "mute",
+        "version": "1.0.0",
+        "hasPermssion": 2,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Khóa mõm",
+        "commandCategory": "Quản lý nhóm",
+        "usages": "/mute [@mention] [thời gian]",
+        "cooldowns": 3
+    },
+    "unmute": {
+        "name": "unmute",
+        "version": "1.0.0",
+        "hasPermssion": 2,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Bỏ khóa mõm",
+        "commandCategory": "Quản lý nhóm",
+        "usages": "/unmute [@mention]",
+        "cooldowns": 3
+    },
+    "videogirl": {
+        "name": "videogirl",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Gửi video ngẫu nhiên kèm câu thính",
+        "commandCategory": "Giải trí",
+        "usages": "/videogirl",
+        "cooldowns": 10,
+        "alias": [
+            "vdgirl",
+            "vdgai"
+        ]
+    },
+    "tiktokdownload": {
+        "name": "tiktokdownload",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tải video hoặc ảnh từ TikTok",
+        "commandCategory": "Tiện ích",
+        "usages": "/tiktokdownload [URL TikTok]",
+        "cooldowns": 5,
+        "alias": [
+            "ttdl"
+        ]
+    },
+    "getidfb": {
+        "name": "getidfb",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Lấy ID Facebook từ URL",
+        "commandCategory": "Tiện ích",
+        "usages": "/getidfb [URL Facebook]",
+        "cooldowns": 5
+    },
+    "shortlink": {
+        "name": "shortlink",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Rút gọn liên kết",
+        "commandCategory": "Tiện ích",
+        "usages": "/shortlink [URL]",
+        "cooldowns": 5
+    },
+    "system": {
+        "name": "system",
+        "version": "1.0.0",
+        "hasPermssion": 3,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Xem thông tin hệ thống",
+        "commandCategory": "Quản lý nhóm",
+        "usages": "/system",
+        "cooldowns": 60
+    },
+    "nhaccuatui": {
+        "name": "nhaccuatui",
+        "version": "1.0.0",
+        "hasPermssion": 1,
+        "credits": "Vũ Xuân Kiên",
+        "description": "Tìm kiếm và tải nhạc từ Nhaccuatui",
+        "commandCategory": "Âm nhạc",
+        "usages": "/nhaccuatui [tên bài hát]",
+        "cooldowns": 5,
+        "alias": [
+            "nct",
+            "nhaccuatao"
+        ]
+    }
+}

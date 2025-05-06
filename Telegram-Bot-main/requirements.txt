@@ -1,0 +1,12 @@
+pyTelegramBotAPI
+requests
+aiohttp
+gTTS
+beautifulsoup4
+colorama
+cachetools
+pillow
+pygments
+psutil
+py-cpuinfo
+deep_translator

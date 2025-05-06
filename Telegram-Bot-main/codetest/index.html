@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple Telegram Bot Control Panel with Chat List">
+    <title>Telegram Bot Panel</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css">
+    <style>
+        :root {
+            --body-color: #f8f9fa;
+            --container-color: #ffffff;
+            --title-color: #212529;
+            --text-color: #495057;
+            --text-color-light: #adb5bd;
+            --input-border-color: #ced4da;
+            --box-shadow-color: rgba(0, 0, 0, 0.1);
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --selected-bg-color: #cfe2ff;
+             --selected-text-color: #052c65;
+             --list-hover-bg: #e9ecef;
+        }
+
+        body.dark {
+            --body-color: #212529;
+            --container-color: #343a40;
+            --title-color: #f8f9fa;
+            --text-color: #dee2e6;
+            --text-color-light: #adb5bd;
+            --input-border-color: #495057;
+            --box-shadow-color: rgba(255, 255, 255, 0.1);
+            --selected-bg-color: #0d6efd; /* Use primary blue for dark mode selection */
+            --selected-text-color: #ffffff;
+            --list-hover-bg: #495057;
+        }
+
+        body {
+            padding-top: 80px;
+            padding-bottom: 20px;
+            background-color: var(--body-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .panel-container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            background-color: var(--container-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--box-shadow-color);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--title-color);
+        }
+
+        .form-control {
+            margin-bottom: 1rem;
+            background-color: var(--container-color);
+            color: var(--text-color);
+            border: 1px solid var(--input-border-color);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+        .form-select { /* Keep style if used elsewhere */
+             margin-bottom: 1rem;
+             background-color: var(--container-color);
+             color: var(--text-color);
+             border: 1px solid var(--input-border-color);
+             transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+
+        .form-control::placeholder {
+             color: var(--text-color-light);
+        }
+
+        body.dark .form-control,
+        body.dark .form-select {
+            background-color: #495057;
+            color: var(--text-color);
+            border-color: var(--input-border-color);
+        }
+        body.dark .form-control::placeholder {
+             color: var(--text-color-light);
+        }
+
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+         .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+         .action-btn:disabled {
+            background-color: #adb5bd !important;
+            background-image: none !important;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+         .action-btn i {
+            margin-left: 8px;
+        }
+
+        .send-btn {
+             background: linear-gradient(45deg, var(--primary-color), #00b7eb);
+         }
+        .fetch-btn {
+             background-color: var(--secondary-color);
+             height: calc(1.5em + .75rem + 2px);
+             padding-top: .375rem;
+             padding-bottom: .375rem;
+             margin-top: 0; /* Align with label */
+        }
+         body.dark .fetch-btn {
+            background-color: #5a6268;
+         }
+
+
+        #statusMessage {
+            margin-top: 15px;
+            font-weight: bold;
+            min-height: 1.5em;
+        }
+        .status-success { color: #28a745; }
+        body.dark .status-success { color: #33d65b; }
+        .status-error { color: #dc3545; }
+         body.dark .status-error { color: #ff5566; }
+        .status-info { color: #0dcaf0; }
+        body.dark .status-info { color: #3dd5f3; }
+
+         .header-area{
+            background-color: var(--container-color);
+            transition: background-color 0.3s;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 4px var(--box-shadow-color);
+         }
+         .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+         }
+         .h__logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--title-color);
+            text-decoration: none;
+         }
+        .dark-light {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--title-color);
+         }
+         .dark-light .sun { display: none; }
+         body.dark .dark-light .sun { display: inline-block; }
+         body.dark .dark-light .moon { display: none; }
+
+         /* Chat List Styles */
+        #chatListContainer {
+            max-height: 250px; /* Limit height and make scrollable */
+            overflow-y: auto;
+            border: 1px solid var(--input-border-color);
+            border-radius: 0.375rem; /* Match bootstrap */
+            margin-top: 0.5rem;
+         }
+        .chat-list-item {
+             padding: 0.75rem 1rem;
+             cursor: pointer;
+             border-bottom: 1px solid var(--input-border-color);
+             transition: background-color 0.2s;
+             color: var(--text-color);
+             background-color: var(--container-color);
+         }
+         .chat-list-item:last-child {
+             border-bottom: none; /* Remove border from last item */
+         }
+         .chat-list-item:hover {
+             background-color: var(--list-hover-bg);
+         }
+         .chat-list-item.selected {
+             background-color: var(--selected-bg-color);
+             color: var(--selected-text-color);
+             font-weight: bold;
+         }
+
+         /* Adjust layout for label and button */
+         .fetch-control-group {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+             margin-bottom: 0.5rem; /* Space before list */
+         }
+          .fetch-control-group .form-label {
+              margin-bottom: 0; /* Remove bottom margin from label */
+          }
+         .fetch-control-group .fetch-btn {
+             margin-top: 0; /* Ensure button aligns */
+             margin-right: 0; /* Remove default right margin */
+         }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-area pt-3 pb-3">
+            <div class="container">
+                <div class="header">
+                    <a href="#" class="h__logo">TG PANEL</a>
+                    <div class="dark-light">
+                        <i class="fi fi-br-moon moon"></i>
+                        <i class="fi fi-br-sun sun"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container panel-container">
+            <h1 class="text-center mb-4" style="color: var(--title-color);">Telegram Bot Panel</h1>
+
+            <form id="telegramForm">
+                <div class="mb-3">
+                    <label for="botToken" class="form-label">Bot Token</label>
+                    <input type="text" class="form-control" id="botToken" value="8189991887:AAHg1J-613AsRS5u2jjS6aRpRHr0PtdQFo4" required>
+                </div>
+
+                <div class="mb-3">
+                    <div class="fetch-control-group">
+                         <label class="form-label">Select Chat</label>
+                         <button type="button" id="fetchChatsBtn" class="action-btn fetch-btn">
+                             Fetch
+                             <div id="fetchSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                             </div>
+                         </button>
+                    </div>
+                    <div id="chatListContainer">
+                        <!-- Chat items will be loaded here -->
+                    </div>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="messageText" class="form-label">Message / Caption</label>
+                    <textarea class="form-control" id="messageText" rows="4" placeholder="Enter your message or caption here..."></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="fileInput" class="form-label">File (Optional)</label>
+                    <input class="form-control" type="file" id="fileInput">
+                    <small class="form-text" style="color: var(--text-color-light);">Select an image, video, or document to send.</small>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                     <button type="button" id="sendButton" class="action-btn send-btn" disabled>
+                         Send <i class="fi fi-sr-paper-plane"></i>
+                         <div id="sendSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status">
+                              <span class="visually-hidden">Loading...</span>
+                         </div>
+                     </button>
+                </div>
+
+            </form>
+
+            <div id="statusMessage" class="text-center"></div>
+        </div>
+    </main>
+
+    <script>
+        const body = document.querySelector("body");
+        const modeToggle = document.querySelector(".dark-light");
+        let getMode = localStorage.getItem("mode");
+        if (getMode && getMode === "dark-mode") {
+            body.classList.add("dark");
+            if(modeToggle) modeToggle.classList.add("active");
+        }
+        if (modeToggle) {
+            modeToggle.addEventListener("click", () => {
+                body.classList.toggle("dark");
+                modeToggle.classList.toggle("active");
+                localStorage.setItem("mode", body.classList.contains("dark") ? "dark-mode" : "light-mode");
+            });
+        }
+
+        const botTokenInput = document.getElementById('botToken');
+        const chatListContainer = document.getElementById('chatListContainer');
+        const messageTextInput = document.getElementById('messageText');
+        const fileInput = document.getElementById('fileInput');
+        const sendButton = document.getElementById('sendButton');
+        const fetchChatsBtn = document.getElementById('fetchChatsBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const fetchSpinner = document.getElementById('fetchSpinner');
+        const sendSpinner = document.getElementById('sendSpinner');
+
+        let selectedChatId = null; // Variable to store the selected chat ID
+
+        fetchChatsBtn.addEventListener('click', fetchChats);
+        sendButton.addEventListener('click', handleSend);
+
+        function setLoading(buttonType, isLoading) {
+             const button = buttonType === 'fetch' ? fetchChatsBtn : sendButton;
+             const spinner = buttonType === 'fetch' ? fetchSpinner : sendSpinner;
+
+             button.disabled = isLoading;
+             if (isLoading) {
+                 spinner.classList.remove('d-none');
+             } else {
+                 spinner.classList.add('d-none');
+                 if (buttonType === 'send') {
+                     button.disabled = !selectedChatId; // Disable if no chat selected
+                 } else if (buttonType === 'fetch') {
+                     button.disabled = false;
+                 }
+             }
+         }
+
+        function updateStatus(message, type = 'info') {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-${type} text-center`;
+        }
+
+        function handleChatSelection(chatId, targetElement) {
+            selectedChatId = chatId;
+
+            // Remove 'selected' class from all items
+            const items = chatListContainer.querySelectorAll('.chat-list-item');
+            items.forEach(item => item.classList.remove('selected'));
+
+            // Add 'selected' class to the clicked item
+            targetElement.classList.add('selected');
+
+            // Enable send button
+            sendButton.disabled = false;
+             updateStatus(`Selected: ${targetElement.textContent.trim()}`, 'info'); // Update status
+        }
+
+        async function fetchChats() {
+            const token = botTokenInput.value.trim();
+            if (!token) {
+                updateStatus('Please enter a Bot Token first.', 'error');
+                return;
+            }
+
+            setLoading('fetch', true);
+            updateStatus('Fetching recent chats...', 'info');
+            chatListContainer.innerHTML = ''; // Clear previous list
+            selectedChatId = null; // Reset selection
+            sendButton.disabled = true; // Disable send while fetching/no selection
+
+            const apiUrl = `https://api.telegram.org/bot${token}/getUpdates?limit=100&offset=-1`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                     const errorData = await response.json().catch(() => ({ description: `HTTP error! Status: ${response.status}` }));
+                     throw new Error(errorData.description || `HTTP error! Status: ${response.status}`);
+                 }
+                const data = await response.json();
+
+                if (!data.ok) {
+                    throw new Error(data.description || 'API request failed');
+                }
+
+                const chats = new Map();
+                let latestUpdateId = 0;
+
+                if (data.result && data.result.length > 0) {
+                    data.result.forEach(update => {
+                        latestUpdateId = Math.max(latestUpdateId, update.update_id);
+                        let chat = null;
+                        if (update.message) chat = update.message.chat;
+                        else if (update.edited_message) chat = update.edited_message.chat;
+                        else if (update.channel_post) chat = update.channel_post.chat;
+                        else if (update.edited_channel_post) chat = update.edited_channel_post.chat;
+                        else if (update.my_chat_member) chat = update.my_chat_member.chat;
+                        else if (update.callback_query) chat = update.callback_query.message?.chat;
+
+                        if (chat && chat.id) {
+                            let chatTitle = chat.title || `${chat.first_name || ''} ${chat.last_name || ''}`.trim() || `ID: ${chat.id}`;
+                            if (chat.type === 'private' && !chat.title) {
+                                chatTitle = `${chat.first_name || ''} ${chat.last_name || ''}`.trim() || `User: ${chat.id}`;
+                            } else if (chat.type !== 'private' && chat.title) {
+                                chatTitle = `${chat.title} (${chat.type})`;
+                            }
+                             if (!chats.has(chat.id)) {
+                                chats.set(chat.id, chatTitle);
+                             }
+                        }
+                    });
+                }
+
+
+                if (chats.size > 0) {
+                     chats.forEach((title, id) => {
+                         const chatItem = document.createElement('div');
+                         chatItem.classList.add('chat-list-item');
+                         chatItem.textContent = title;
+                         chatItem.dataset.chatId = id; // Store chat ID in data attribute
+                         chatItem.addEventListener('click', (event) => {
+                             handleChatSelection(id, event.currentTarget);
+                         });
+                         chatListContainer.appendChild(chatItem);
+                     });
+                     updateStatus(`Found ${chats.size} recent chat(s). Click one to select.`, 'success');
+                } else {
+                    chatListContainer.innerHTML = '<div class="chat-list-item text-muted">No recent chats found.</div>'; // Display message inside the container
+                    updateStatus('No recent chats found. Interact with the bot and try fetching again.', 'info');
+                }
+
+            } catch (error) {
+                console.error("Fetch Chats Error:", error);
+                updateStatus(`Error fetching chats: ${error.message}`, 'error');
+                 chatListContainer.innerHTML = `<div class="chat-list-item text-danger">Error fetching chats.</div>`;
+            } finally {
+                setLoading('fetch', false);
+            }
+        }
+
+
+        async function handleSend() {
+            const token = botTokenInput.value.trim();
+            const chatId = selectedChatId; // Get from the stored variable
+            const text = messageTextInput.value.trim();
+            const file = fileInput.files[0];
+
+            if (!token) {
+                updateStatus('Bot Token is required.', 'error');
+                return;
+            }
+             if (!chatId) { // Check if a chat has been selected
+                updateStatus('Please fetch and select a chat first.', 'error');
+                return;
+            }
+
+            if (!text && !file) {
+                updateStatus('Please enter a message or select a file.', 'error');
+                return;
+            }
+
+            setLoading('send', true);
+            updateStatus(`Sending to chat ID: ${chatId}...`, 'info');
+
+            try {
+                if (file) {
+                    await sendFile(token, chatId, text, file);
+                } else {
+                    await sendTextMessage(token, chatId, text);
+                }
+                fileInput.value = '';
+            } catch (error) {
+                console.error("Send error:", error);
+                updateStatus(`Error sending: ${error.message || 'Failed to send.'}`, 'error');
+            } finally {
+                setLoading('send', false);
+            }
+        }
+
+         async function sendTextMessage(token, chatId, text) {
+            const apiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: 'HTML' }),
+            });
+            const result = await response.json();
+            if (!response.ok || !result.ok) { throw new Error(result.description || `HTTP error! Status: ${response.status}`); }
+            updateStatus('Text message sent successfully!', 'success');
+            return result;
+        }
+
+        async function sendFile(token, chatId, caption, file) {
+            const formData = new FormData();
+            formData.append('chat_id', chatId);
+            if (caption) { formData.append('caption', caption); formData.append('parse_mode', 'HTML'); }
+            let method = 'sendDocument', fileTypeParam = 'document';
+            if (file.type.startsWith('image/')) { method = 'sendPhoto'; fileTypeParam = 'photo'; }
+            else if (file.type.startsWith('video/')) { method = 'sendVideo'; fileTypeParam = 'video'; }
+            else if (file.type.startsWith('audio/')) { method = 'sendAudio'; fileTypeParam = 'audio'; }
+            formData.append(fileTypeParam, file, file.name);
+            const apiUrl = `https://api.telegram.org/bot${token}/${method}`;
+            const response = await fetch(apiUrl, { method: 'POST', body: formData });
+            const result = await response.json();
+            if (!response.ok || !result.ok) { throw new Error(result.description || `HTTP error! Status: ${response.status}`); }
+            updateStatus(`${fileTypeParam.charAt(0).toUpperCase() + fileTypeParam.slice(1)} sent successfully!`, 'success');
+            return result;
+        }
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

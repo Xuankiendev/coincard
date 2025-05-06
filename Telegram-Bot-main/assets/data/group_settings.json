@@ -1,0 +1,22 @@
+{
+    "-1002370415846": {
+        "nameGroup": "Lập Trình Là Phải Ctrl + D",
+        "memberApprove": true,
+        "autoTranslator": {
+            "enabled": false,
+            "lang": null
+        },
+        "botStatus": "on",
+        "autoPR": []
+    },
+    "-1002387277029": {
+        "nameGroup": "",
+        "memberApprove": false,
+        "autoTranslator": {
+            "enabled": false,
+            "lang": null
+        },
+        "botStatus": "off",
+        "autoPR": []
+    }
+}
